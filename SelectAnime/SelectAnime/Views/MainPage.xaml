@@ -7,7 +7,10 @@
              x:Class="SelectAnime.MainPage">
 
     <StackLayout>
-        <SearchBar Placeholder="Busca tu amigo"/>
+        <SearchBar Placeholder="Busca tu amigo"
+                   x:Name="search"
+                   SearchCommand="{Binding SearchCommand}"
+                   SearchCommandParameter="{Binding Text, Source={x:Reference search}}"/>
         <ListView>
         <ListView.ItemsSource>
                 <x:Array Type="{x:Type x:String}">
