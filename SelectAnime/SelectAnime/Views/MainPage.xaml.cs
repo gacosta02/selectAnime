@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SelectAnime.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -13,9 +14,17 @@ namespace SelectAnime
     [DesignTimeVisible(false)]
     public partial class MainPage : ContentPage
     {
+        public MainPageViewModel viewModel { get; set; }
         public MainPage()
         {
             InitializeComponent();
+        }
+        protected override async void OnAppearing()
+        {
+            base.OnAppearing();
+            viewModel = new MainPageViewModel();
+            this.BindingContext = viewModel;
+            await viewModel.LoadCHaraters();
         }
     }
 }
